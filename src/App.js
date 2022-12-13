@@ -4,6 +4,7 @@ import { OrbitControls } from '@react-three/drei'
 import { Menu } from './components/Menu';
 import { Scene } from './components/Scene';
 import * as THREE from 'three';
+import {SkyBox} from "./components/Skybox";
 
 const App = () => {
   const crimson = new THREE.Color(0xdc143c);
@@ -71,10 +72,11 @@ const App = () => {
         handleTextureChange={handleTextureChange} />
       <Canvas dpr={[1, 2]} camera={{ fov: 50 }}>
         <color attach="background" args={['#253B56']} />
+        <SkyBox />
         <Suspense fallback={null}>
           <Scene currentTexture={currentTexture} currentColor={currentColor} />
         </Suspense>
-        <OrbitControls autoRotate enableZoom={true} enablePan={true} />
+        <OrbitControls enableZoom={true} enablePan={true} />
       </Canvas>
     </div>
   )
